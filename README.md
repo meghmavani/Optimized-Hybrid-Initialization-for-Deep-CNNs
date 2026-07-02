@@ -12,8 +12,6 @@
 ![SVHN](https://img.shields.io/badge/SVHN-Real--World%20Digits-17BECF)
 
 ## Summary
-This repository is a comparative deep-learning research project focused on **weight initialization strategies** across multiple vision datasets and model families.
-
 This repository documents our full research path toward a new initialization strategy. We first experimented with **Poisson-based** and **scaled-uniform** ideas, then systematically studied **Xavier** and **LSUV**, and finally developed a unique **Hybrid Orthogonal + He** initialization method.
 
 Across these stages, we evaluate effects on training stability, convergence speed, final accuracy, and cross-architecture generalization.
