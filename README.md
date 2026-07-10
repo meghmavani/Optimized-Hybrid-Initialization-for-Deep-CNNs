@@ -76,6 +76,78 @@ Python script:
 python path/to/file.py
 ```
 
+## Running All Benchmark Experiments
+
+All benchmark notebooks can be executed automatically using the provided runner:
+
+```bash
+python run_all_benchmarks.py
+```
+
+The script uses Jupyter `nbconvert` to execute every selected notebook sequentially without manually opening them.
+
+Install notebook execution dependencies if required:
+
+```bash
+pip install notebook nbconvert
+```
+
+The runner executes experiments across:
+
+- CIFAR-10
+- CIFAR-100
+- QMNIST
+- STL-10
+- SVHN
+
+covering architectures including:
+
+- CaffeNet / AlexNet
+- VGG variants
+- ResNet variants
+- GoogLeNet variants
+- Custom CNN models
+
+To select specific experiments, open:
+
+```text
+run_all_benchmarks.py
+```
+
+and comment/uncomment notebook paths inside:
+
+```python
+notebooks = [
+    ...
+]
+```
+
+The runner automatically:
+
+- Executes notebooks sequentially
+- Saves executed notebook outputs in-place
+- Records runtime for each benchmark
+- Skips missing files
+- Continues remaining experiments if one fails
+
+Example output:
+
+```text
+======================================================================
+STARTING: Final Benchmarks/CIFAR-10/CaffeNet.ipynb
+======================================================================
+
+FINISHED: Final Benchmarks/CIFAR-10/CaffeNet.ipynb
+Runtime: 12.42 minutes
+
+============================
+ALL POSSIBLE RUNS COMPLETE
+TOTAL TIME: 8.40 hours
+============================
+```
+
+This allows full reproduction of reported accuracy, loss, and convergence benchmark results.
+
 ---
 
 ## Folder Overview (Dataset + Brief)

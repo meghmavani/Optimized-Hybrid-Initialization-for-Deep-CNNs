@@ -1,0 +1,68 @@
+# =========================
+# Dataset folders
+# =========================
+
+# Ignore every folder named data anywhere in repo
+**/data/
+**/data/**
+
+
+# =========================
+# Python cache
+# =========================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# =========================
+# Jupyter Notebook
+# =========================
+
+.ipynb_checkpoints/
+
+
+# =========================
+# PyTorch files
+# =========================
+
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+
+# =========================
+# Logs / outputs
+# =========================
+
+*.log
+runs/
+outputs/
+checkpoints/
+
+
+# =========================
+# Virtual environments
+# =========================
+
+venv/
+env/
+.venv/
+
+
+# =========================
+# IDE files
+# =========================
+
+.vscode/
+.idea/
+
+
+# =========================
+# OS files
+# =========================
+
+.DS_Store
+Thumbs.db
