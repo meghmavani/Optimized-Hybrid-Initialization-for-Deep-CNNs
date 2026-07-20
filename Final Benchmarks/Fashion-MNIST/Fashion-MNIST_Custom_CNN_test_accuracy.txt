@@ -1,0 +1,1 @@
+Fashion-MNIST_Custom_CNN Test Accuracy: 92.28%

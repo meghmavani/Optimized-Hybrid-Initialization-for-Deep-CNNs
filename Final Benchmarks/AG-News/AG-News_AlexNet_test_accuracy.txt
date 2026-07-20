@@ -1,0 +1,1 @@
+AG-News_AlexNet Test Accuracy: 88.46%

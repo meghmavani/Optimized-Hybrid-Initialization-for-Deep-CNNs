@@ -1,0 +1,1 @@
+EuroSAT_AlexNet Test Accuracy: 91.56%

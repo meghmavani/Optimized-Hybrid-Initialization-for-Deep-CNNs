@@ -1,0 +1,1 @@
+AG-News_ResNet-18 Test Accuracy: 89.59%

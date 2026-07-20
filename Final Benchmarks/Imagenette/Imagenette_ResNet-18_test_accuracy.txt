@@ -1,0 +1,1 @@
+Imagenette_ResNet-18 Test Accuracy: 73.76%

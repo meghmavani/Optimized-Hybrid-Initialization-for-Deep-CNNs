@@ -1,0 +1,1 @@
+AG-News_Custom_TextCNN Test Accuracy: 89.13%

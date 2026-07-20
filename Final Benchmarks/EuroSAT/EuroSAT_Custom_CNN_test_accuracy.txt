@@ -1,0 +1,1 @@
+EuroSAT_Custom_CNN Test Accuracy: 95.15%

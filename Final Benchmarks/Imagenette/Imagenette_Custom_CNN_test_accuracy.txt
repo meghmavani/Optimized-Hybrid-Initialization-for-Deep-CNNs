@@ -1,0 +1,1 @@
+Imagenette_Custom_CNN Test Accuracy: 72.25%

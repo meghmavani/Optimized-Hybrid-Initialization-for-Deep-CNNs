@@ -1,0 +1,1 @@
+GTSRB_GoogLeNet Test Accuracy: 90.77%

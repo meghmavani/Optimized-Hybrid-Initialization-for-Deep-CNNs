@@ -25,7 +25,13 @@ notebooks = [
 
 #    r"Final Benchmarks/SVHN/Mini-VGG.ipynb",
 #    r"Final Benchmarks/SVHN/ResNet-Mini.ipynb",
-#    r"Final Benchmarks/SVHN/VGG.ipynb"
+#    r"Final Benchmarks/SVHN/VGG.ipynb",
+
+#    r"Final Benchmarks/GTSRB/Custom_CNN.ipynb",
+#    r"Final Benchmarks/EuroSAT/Custom_CNN.ipynb",
+#    r"Final Benchmarks/Imagenette/Custom_CNN.ipynb",
+#    r"Final Benchmarks/Oxford-IIIT-Pet/Custom_CNN.ipynb",
+#    r"Final Benchmarks/AG-News/Custom_TextCNN.ipynb"
 ]
 
 

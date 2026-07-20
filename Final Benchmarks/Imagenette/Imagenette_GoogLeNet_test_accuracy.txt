@@ -1,0 +1,1 @@
+Imagenette_GoogLeNet Test Accuracy: 72.99%

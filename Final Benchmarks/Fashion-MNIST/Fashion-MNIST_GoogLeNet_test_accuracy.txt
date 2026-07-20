@@ -1,0 +1,1 @@
+Fashion-MNIST_GoogLeNet Test Accuracy: 91.96%

@@ -97,6 +97,11 @@ The runner executes experiments across:
 - QMNIST
 - STL-10
 - SVHN
+- GTSRB
+- EuroSAT
+- Imagenette
+- Oxford-IIIT Pet
+- AG News (text)
 
 covering architectures including:
 
@@ -173,6 +178,38 @@ This allows full reproduction of reported accuracy, loss, and convergence benchm
 ### Final Benchmarks/SVHN
 - **Dataset:** SVHN (Street View House Numbers)
 - **Brief:** Real-world digit classification benchmark to test robustness on naturally captured scene digits.
+
+### Final Benchmarks/GTSRB
+- **Dataset:** GTSRB (German Traffic Sign Recognition Benchmark, 43 classes)
+- **Brief:** Real-world traffic sign photos with varying lighting, blur, and scale to test initialization robustness on safety-critical natural imagery.
+
+### Final Benchmarks/EuroSAT
+- **Dataset:** EuroSAT (Sentinel-2 satellite imagery, 64x64 RGB, 10 land-use classes)
+- **Brief:** Real-world remote sensing benchmark to evaluate initialization behavior on texture-dominated aerial imagery.
+
+### Final Benchmarks/Imagenette
+- **Dataset:** Imagenette (10-class subset of ImageNet, natural photographs)
+- **Brief:** Real-world photograph benchmark to test whether hybrid initialization scales to ImageNet-style natural images.
+
+### Final Benchmarks/Oxford-IIIT-Pet
+- **Dataset:** Oxford-IIIT Pet (37 cat/dog breeds, natural photographs)
+- **Brief:** Fine-grained real-world classification with a small training set to test initialization under data-scarce conditions.
+
+### Final Benchmarks/AG-News
+- **Dataset:** AG News (news articles, 4 topic classes)
+- **Brief:** Text classification with a 1D convolutional network to test whether hybrid initialization transfers beyond vision.
+
+### Final Benchmarks/Fashion-MNIST
+- **Dataset:** Fashion-MNIST (Zalando clothing product photos, 28x28 grayscale, 10 classes)
+- **Brief:** Real-world product image benchmark; grayscale converted to RGB following the QMNIST pipeline.
+
+### Cross-architecture grid (GTSRB, EuroSAT, Imagenette, Fashion-MNIST, AG-News)
+Each of these five dataset folders also contains `ResNet-18.ipynb`, `AlexNet.ipynb`, and `GoogLeNet.ipynb` alongside `Custom_CNN.ipynb` / `Custom_TextCNN.ipynb`, mirroring the QMNIST/STL10 pattern:
+- torchvision models trained from scratch (`weights=None`), final layer adapted to the dataset's classes.
+- Hybrid initialization in the module-type form used by the existing QMNIST/STL10 notebooks: He (fan_out) for every Conv2d, Orthogonal for every Linear.
+- AlexNet runs at 224x224 input (as in the STL10 CaffeNet notebook); ResNet-18 and GoogLeNet run at the dataset's native benchmark size.
+- For AG-News, the token sequence is embedded (64 tokens x 64 dims) and treated as a 1-channel 2D map, with each model's first conv adapted to 1 channel (QMNIST grayscale pattern).
+- All models per dataset can be executed with `python run_model_benchmarks.py`.
 
 ---
 
@@ -358,6 +395,61 @@ This allows full reproduction of reported accuracy, loss, and convergence benchm
 - Features:
 - Deeper sequential conv representation learning.
 - Useful contrast against residual and inception-style models.
+
+---
+
+#### 2.6 Final Benchmarks/GTSRB
+
+### `Final Benchmarks/GTSRB/Custom_CNN.ipynb`
+- Architecture: Custom 9-layer CNN (7 conv + 2 FC).
+- Features:
+- Hybrid init (He in first 6 layers, Orthogonal deeper).
+- 32x32 input pipeline; no horizontal flip (signs are direction-sensitive).
+- 43-class real-world traffic sign classification.
+
+---
+
+#### 2.7 Final Benchmarks/EuroSAT
+
+### `Final Benchmarks/EuroSAT/Custom_CNN.ipynb`
+- Architecture: Custom 9-layer CNN (7 conv + 2 FC) for 64x64 inputs.
+- Features:
+- Hybrid init (He in first 6 layers, Orthogonal deeper).
+- Seeded 80/10/10 train/val/test split (EuroSAT has no official split).
+- Satellite land-use classification on real Sentinel-2 imagery.
+
+---
+
+#### 2.8 Final Benchmarks/Imagenette
+
+### `Final Benchmarks/Imagenette/Custom_CNN.ipynb`
+- Architecture: Custom 9-layer CNN (7 conv + 2 FC) for 64x64 inputs.
+- Features:
+- Hybrid init (He in first 6 layers, Orthogonal deeper).
+- ImageNet-style natural photographs (10 classes), resized crop augmentation.
+- Requires torchvision >= 0.16 for the Imagenette dataset.
+
+---
+
+#### 2.9 Final Benchmarks/Oxford-IIIT-Pet
+
+### `Final Benchmarks/Oxford-IIIT-Pet/Custom_CNN.ipynb`
+- Architecture: Custom 9-layer CNN (7 conv + 2 FC) for 64x64 inputs.
+- Features:
+- Hybrid init (He in first 6 layers, Orthogonal deeper).
+- Fine-grained 37-breed classification from scratch on a small training set.
+- Uses the official trainval/test split.
+
+---
+
+#### 2.10 Final Benchmarks/AG-News
+
+### `Final Benchmarks/AG-News/Custom_TextCNN.ipynb`
+- Architecture: Custom 9-layer 1D text CNN (embedding + 7 Conv1d + 2 FC), mirroring the image NineLayerCNN.
+- Features:
+- Hybrid init (He in first 6 Conv1d/Linear layers, Orthogonal deeper).
+- Word-level vocabulary (top 50k tokens), sequences padded/truncated to 64 tokens.
+- Tests whether hybrid initialization transfers from vision to text.
 
 ---
 
