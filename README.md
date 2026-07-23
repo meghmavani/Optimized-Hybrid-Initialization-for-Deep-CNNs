@@ -153,11 +153,40 @@ This allows full reproduction of reported accuracy, loss, and convergence benchm
 
 ---
 
+## Ablation Studies
+
+To isolate the contribution of the **Hybrid (Orthogonal + He)** scheme, the `Ablation Studies/` folder re-runs a single fixed 9-layer CNN architecture per dataset under four initialization strategies — **He**, **Xavier**, **Orthogonal**, and **Hybrid** — with everything else (architecture, optimizer, learning rate, epochs, augmentation) held constant. This isolates the effect of initialization alone, separate from the cross-architecture comparisons in `Final Benchmarks/`.
+
+Each dataset folder contains one notebook per initializer (`He.ipynb`, `Hybrid.ipynb`, `Orthogonal.ipynb`, `Xavier.ipynb`) plus, once run, its results: `*_metrics.csv` (per-epoch train/val loss and accuracy), `*_curves.png` (loss/accuracy curves), and `*_test_accuracy.txt` (final test accuracy).
+
+### Final test accuracy by initializer (%)
+
+| Dataset | He | Hybrid | Orthogonal | Xavier | Best |
+|---|---|---|---|---|---|
+| AG-News | 89.09 | **89.71** | 89.47 | 89.45 | Hybrid |
+| CIFAR-10 | 86.64 | **86.99** | 86.50 | 86.83 | Hybrid |
+| CIFAR-100 | 56.55 | 58.12 | 57.50 | **58.17** | Xavier |
+| EuroSAT | 94.74 | **94.81** | 94.52 | 94.63 | Hybrid |
+| Fashion-MNIST | 92.29 | 92.33 | **92.47** | 91.96 | Orthogonal |
+| GTSRB | **96.93** | 96.08 | 96.67 | 96.09 | He |
+| Imagenette | **74.55** | 73.83 | 74.45 | 73.91 | He |
+| SVHN | 93.36 | **93.75** | 93.02 | 93.62 | Hybrid |
+
+QMNIST and STL10 currently only have the four ablation notebooks checked in; they haven't been run yet, so no results exist for those two.
+
+Full per-epoch metrics and summary tables for each dataset (with the best initializer highlighted) are compiled into standalone Excel workbooks in [`ablation_result_studies/`](ablation_result_studies), one file per dataset (`ablation_result_studies/CIFAR-10.xlsx`, etc.), each with a `Summary` sheet and one sheet per initializer including an accuracy-vs-epoch chart.
+
+---
+
 ## Folder Overview (Dataset + Brief)
 
 ### Initial Research
 - **Primary dataset:** CIFAR-10
 - **Brief:** Baseline and exploratory experiments to test foundational methods (LSUV, Xavier) and custom ideas (Poisson-based, scaled-uniform) on CIFAR-10.
+
+### Ablation Studies
+- **Datasets:** CIFAR-10, CIFAR-100, QMNIST, STL10, SVHN, GTSRB, EuroSAT, Imagenette, Fashion-MNIST, AG-News
+- **Brief:** Single fixed 9-layer CNN per dataset, re-run under He / Xavier / Orthogonal / Hybrid initialization with everything else held constant, to isolate the effect of initialization alone. See [Ablation Studies](#ablation-studies) above for the results table; compiled Excel workbooks live in `ablation_result_studies/`.
 
 ### Final Benchmarks/CIFAR-10
 - **Dataset:** CIFAR-10 (32x32 RGB, 10 classes)
