@@ -1,0 +1,1 @@
+Fashion-MNIST_Xavier Test Accuracy: 91.96%

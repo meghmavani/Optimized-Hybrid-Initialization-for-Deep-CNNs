@@ -1,0 +1,1 @@
+SVHN_Xavier Test Accuracy: 93.62%

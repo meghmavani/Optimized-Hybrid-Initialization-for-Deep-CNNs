@@ -1,0 +1,1 @@
+CIFAR-10_Xavier Test Accuracy: 86.83%

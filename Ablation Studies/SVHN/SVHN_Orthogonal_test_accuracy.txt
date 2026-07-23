@@ -1,0 +1,1 @@
+SVHN_Orthogonal Test Accuracy: 93.02%

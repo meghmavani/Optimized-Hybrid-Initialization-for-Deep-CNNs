@@ -1,0 +1,1 @@
+Imagenette_Orthogonal Test Accuracy: 74.45%

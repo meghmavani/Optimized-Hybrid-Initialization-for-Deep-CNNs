@@ -1,0 +1,1 @@
+CIFAR-100_Hybrid Test Accuracy: 58.12%

@@ -1,0 +1,1 @@
+EuroSAT_He Test Accuracy: 94.74%

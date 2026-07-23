@@ -1,0 +1,1 @@
+EuroSAT_Hybrid Test Accuracy: 94.81%

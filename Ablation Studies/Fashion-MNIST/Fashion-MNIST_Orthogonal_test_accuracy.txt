@@ -1,0 +1,1 @@
+Fashion-MNIST_Orthogonal Test Accuracy: 92.47%

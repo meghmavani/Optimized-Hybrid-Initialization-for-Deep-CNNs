@@ -1,0 +1,1 @@
+SVHN_Hybrid Test Accuracy: 93.75%

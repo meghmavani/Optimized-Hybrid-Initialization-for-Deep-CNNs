@@ -1,0 +1,1 @@
+AG-News_Xavier Test Accuracy: 89.45%
